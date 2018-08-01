@@ -43,7 +43,6 @@ function handleError() {
 
 
 }*/
-
 function addNews() {
     const data = JSON.parse(this.responseText);
     // console.log(data);
@@ -53,7 +52,6 @@ function addNews() {
     const articles = data.response.docs;
     //  console.log(articles);
 
-
     const arr = [];
     const url = [];
 
@@ -61,17 +59,19 @@ function addNews() {
         arr.push(articles[i].snippet);
         url.push(articles[i].web_url);
 
-
         let li = document.createElement("li");
         li.className = 'articleClass';
-        //  console.log(li);
-        li.innerText = `${arr[i]}
-                        ${url[i]}`;
+        li.style.listStyle = 'none';
+        let link = document.createElement('a');
+        link.href = url[i];
+        console.log(link);
+        link.innerHTML = link.href;
+        let paragraph = document.createElement('p');
+        paragraph.innerHTML = arr[i];
+        console.log(paragraph);
+
+        li.appendChild(link);
+        responseContainer.appendChild(paragraph);
         responseContainer.appendChild(li);
-
-
     }
-    // console.log(arr);
-    //console.log(url);
-
 }
